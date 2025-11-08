@@ -54,7 +54,7 @@ export default function Checkout() {
             </div>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="mb-10">
+            <div className="">
               <div className="space-y-4 mb-4">
                 <label htmlFor="walletAddress" className="text-lg">
                   Interledger Wallet Address
