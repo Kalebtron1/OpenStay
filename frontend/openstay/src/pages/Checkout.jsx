@@ -1,8 +1,18 @@
-import { useState  } from "react";
+import {useState} from "react"
 import propertyImage from "../assets/loft.jpg"
 
 export default function Checkout() {
   const [error, setError] = useState("")
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const walletAddress = e.target.walletAddress.value
+    const isValid =
+      /^(g|private|example|peer|self|test[1-3]?|local)(\.[a-zA-Z0-9_~-]+)+$/.test(
+        walletAddress,
+      )
+    setError(isValid ? "" : "Please enter a valid wallet address")
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center relative overflow-hidden">
@@ -21,7 +31,6 @@ export default function Checkout() {
               Modern Loft in Downtown
             </h3>
             <p className="text-gray-500 text-sm mb-4">San Francisco, CA</p>
-
             <div className="flex items-center space-x-4 text-sm text-gray-700 mb-4">
               <div className="flex items-center space-x-1">
                 <span>📅</span>
@@ -44,34 +53,33 @@ export default function Checkout() {
               </div>
             </div>
           </div>
-          <div className="mb-6">
-            <div className="space-y-3 mb-3">
-              <label htmlFor="walletAddress">Interledger Wallet Address</label>
-              <input
-                type="text"
-                id="walletAddress"
-                name="walletAddress"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
-              />
+          <form onSubmit={handleSubmit}>
+            <div className="mb-6">
+              <div className="space-y-3 mb-3">
+                <label htmlFor="walletAddress">
+                  Interledger Wallet Address
+                </label>
+                <input
+                  type="text"
+                  id="walletAddress"
+                  name="walletAddress"
+                  className="w-full mt-2 px-4 py-3 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <button
-              className="hover:cursor-pointer w-full bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600"
-              onClick={() => {
-                const isValid = /^0x[a-fA-F0-9]{40}$/.test(value)
-                setError(isValid ? "" : "Please enter a valid wallet address")
-              }}
-            >
-              Pay Now
-            </button>
             {error ? (
               <p className="mt-2 text-sm text-red-600 font-medium">{error}</p>
             ) : null}
+            <button
+              type="submit"
+              className="hover:cursor-pointer w-full mt-2 bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600"
+            >
+              Pay Now
+            </button>
             <p className="text-xs text-gray-500 text-center mt-2">
               🔒 Your payment is secure
             </p>
-          </div>
+          </form>
         </div>
       </div>
     </div>
