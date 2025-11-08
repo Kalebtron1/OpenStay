@@ -1,6 +1,4 @@
-import React from "react";
-
-import propertyImage from "../assets/loft.jpg";
+import propertyImage from "../assets/loft.jpg"
 
 export default function Checkout() {
   return (
