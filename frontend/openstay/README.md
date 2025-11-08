@@ -79,14 +79,14 @@ export default MyComponent
 ❌ **Bad** (has semicolons):
 
 ```javascript
-import React from 'react';
+import React from 'react'
 
 function MyComponent() {
-  const value = 42;
-  return <div>{value}</div>;
+  const value = 42
+  return <div>{value}</div>
 }
 
-export default MyComponent;
+export default MyComponent
 ```
 
 ## Learn More
