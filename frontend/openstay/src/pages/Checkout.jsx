@@ -1,6 +1,14 @@
+import {useState} from "react"
 import propertyImage from "../assets/loft.jpg"
 
+const paymentMethods = [
+  {title: "Visa ending in 4242", name: "visa"},
+  {title: "Google Pay", name: "google-pay"},
+  {title: "PayPal", name: "paypal"},
+]
 export default function Checkout() {
+  const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0].name)
+
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center relative overflow-hidden">
       <div className="w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
@@ -47,27 +55,25 @@ export default function Checkout() {
             <h4 className="font-semibold mb-3 text-lg">Pay with</h4>
 
             <div className="space-y-3 mb-3">
-              {[
-                { name: "Visa ending in 4242", selected: true },
-                { name: "Google Pay" },
-                { name: "PayPal" },
-              ].map((option, i) => (
-                <div
+              {paymentMethods.map((option, i) => (
+                <label
                   key={i}
                   className={`flex justify-between items-center p-3 border rounded-lg cursor-pointer ${
-                    option.selected
+                    paymentMethod === option.name
                       ? "border-green-500 bg-green-50"
                       : "border-gray-200"
                   }`}
                 >
-                  <span className="text-sm text-gray-800">{option.name}</span>
+                  <span className="text-sm text-gray-800">{option.title}</span>
                   <input
                     type="radio"
-                    checked={option.selected}
-                    readOnly
+                    name="paymentMethod"
+                    value={option.name}
                     className="text-green-500 accent-green-500"
+                    checked={paymentMethod === option.name}
+                    onChange={() => setPaymentMethod(option.name)}
                   />
-                </div>
+                </label>
               ))}
             </div>
 
