@@ -36,18 +36,10 @@ export default function Checkout() {
                 <span>5 nights × $250</span>
                 <span>$1,250.00</span>
               </div>
-              <div className="flex justify-between">
-                <span>Cleaning fee</span>
-                <span>$75.00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Service fee</span>
-                <span>$185.50</span>
-              </div>
               <hr className="my-2" />
               <div className="flex justify-between font-semibold text-gray-900">
                 <span>Total (USD)</span>
-                <span>$1,510.50</span>
+                <span>$1,250.00</span>
               </div>
             </div>
           </div>
