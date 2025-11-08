@@ -68,15 +68,15 @@ export default function Checkout() {
               </div>
             </div>
             {error ? (
-              <p className="mt-2 text-sm text-red-600 font-medium">{error}</p>
+              <p className="text-sm text-red-600 font-medium">{error}</p>
             ) : null}
             <button
               type="submit"
               className="hover:cursor-pointer w-full mt-2 bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600"
             >
-              Pay Now
+              Pay With Interledger
             </button>
-            <p className="text-xs text-gray-500 text-center mt-2">
+            <p className="text-xs text-gray-500 text-center">
               🔒 Your payment is secure
             </p>
           </form>
