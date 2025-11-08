@@ -66,10 +66,12 @@ export default function Checkout() {
                   className="w-full mt-2 px-4 py-3 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
                 />
               </div>
+              <div style={{minHeight: "1.5em"}}>
+                {error ? (
+                  <p className="text-sm text-red-600 font-medium">{error}</p>
+                ) : null}
+              </div>
             </div>
-            {error ? (
-              <p className="text-sm text-red-600 font-medium">{error}</p>
-            ) : null}
             <button
               type="submit"
               className="hover:cursor-pointer w-full mt-2 bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600"
