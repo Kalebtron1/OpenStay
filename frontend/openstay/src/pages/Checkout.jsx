@@ -37,8 +37,6 @@ export default function Checkout() {
                 <span>2 guests</span>
               </div>
             </div>
-
-            {/* Price Details */}
             <div className="border-t border-gray-200 pt-4 space-y-2 text-sm">
               <div className="flex justify-between">
                 <span>5 nights × $250</span>
@@ -53,7 +51,6 @@ export default function Checkout() {
           </div>
           <div className="mb-6">
             <h4 className="font-semibold mb-3 text-lg">Pay with</h4>
-
             <div className="space-y-3 mb-3">
               {paymentMethods.map((option, i) => (
                 <label
@@ -76,15 +73,12 @@ export default function Checkout() {
                 </label>
               ))}
             </div>
-
             <button className="text-green-600 font-medium text-sm">
               + Add payment method
             </button>
           </div>
-
-          {/* Pay Now Button */}
           <div>
-            <button className="w-full bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600">
+            <button className="hover:cursor-pointer w-full bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600">
               Pay Now
             </button>
             <p className="text-xs text-gray-500 text-center mt-2">
