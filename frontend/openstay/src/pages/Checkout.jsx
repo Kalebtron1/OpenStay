@@ -1,13 +1,8 @@
-import {useState} from "react"
+import { useState  } from "react";
 import propertyImage from "../assets/loft.jpg"
 
-const paymentMethods = [
-  {title: "Visa ending in 4242", name: "visa"},
-  {title: "Google Pay", name: "google-pay"},
-  {title: "PayPal", name: "paypal"},
-]
 export default function Checkout() {
-  const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0].name)
+  const [error, setError] = useState("")
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center relative overflow-hidden">
@@ -50,37 +45,29 @@ export default function Checkout() {
             </div>
           </div>
           <div className="mb-6">
-            <h4 className="font-semibold mb-3 text-lg">Pay with</h4>
             <div className="space-y-3 mb-3">
-              {paymentMethods.map((option, i) => (
-                <label
-                  key={i}
-                  className={`flex justify-between items-center p-3 border rounded-lg cursor-pointer ${
-                    paymentMethod === option.name
-                      ? "border-green-500 bg-green-50"
-                      : "border-gray-200"
-                  }`}
-                >
-                  <span className="text-sm text-gray-800">{option.title}</span>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value={option.name}
-                    className="text-green-500 accent-green-500"
-                    checked={paymentMethod === option.name}
-                    onChange={() => setPaymentMethod(option.name)}
-                  />
-                </label>
-              ))}
+              <label htmlFor="walletAddress">Interledger Wallet Address</label>
+              <input
+                type="text"
+                id="walletAddress"
+                name="walletAddress"
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
+              />
             </div>
-            <button className="text-green-600 font-medium text-sm">
-              + Add payment method
-            </button>
           </div>
           <div>
-            <button className="hover:cursor-pointer w-full bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600">
+            <button
+              className="hover:cursor-pointer w-full bg-green-500 text-white py-3 rounded-full font-semibold hover:bg-green-600"
+              onClick={() => {
+                const isValid = /^0x[a-fA-F0-9]{40}$/.test(value)
+                setError(isValid ? "" : "Please enter a valid wallet address")
+              }}
+            >
               Pay Now
             </button>
+            {error ? (
+              <p className="mt-2 text-sm text-red-600 font-medium">{error}</p>
+            ) : null}
             <p className="text-xs text-gray-500 text-center mt-2">
               🔒 Your payment is secure
             </p>
