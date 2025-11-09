@@ -1,0 +1,29 @@
+// src/pages/PaymentFinish.jsx
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+
+export default function PaymentFinish() {
+  const [searchParams] = useSearchParams();
+  const interactRef = searchParams.get("interact_ref");
+  const hash = searchParams.get("hash");
+
+  useEffect(() => {
+    if (interactRef) {
+      // Enviar al backend para finalizar el pago
+      fetch("http://localhost:5000/api/payments/finish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ interact_ref: interactRef, hash })
+      })
+        .then(res => res.json())
+        .then(data => console.log("✅ Pago completado:", data))
+        .catch(err => console.error("❌ Error finalizando pago:", err));
+    }
+  }, [interactRef, hash]);
+
+  return (
+    <div className="p-6 text-center">
+      <h1 className="text-2xl font-bold">Procesando pago...</h1>
+    </div>
+  );
+}

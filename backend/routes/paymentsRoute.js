@@ -1,5 +1,5 @@
 import express from 'express';
-import { startPayment, finishPayment } from '../controlador/openpayments';
+import { startPayment, finishPayment } from '../controlador/openpayments.js';
 
 const router = express.Router();
 
