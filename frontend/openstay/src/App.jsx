@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 
 // Componentes
 import Navbar from "./components/navbar.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/Checkout" element={<Checkout />} />
+
       </Routes>
     </Router>
   );

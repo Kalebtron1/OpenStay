@@ -10,6 +10,9 @@ export default function Navbar(){
                     <li>
                         <Link to = "/Payment" style={{color:"white", textDecoration:"none"}}>Payments</Link>
                     </li>
+                    <li>
+                        <Link to = "/Checkout" style={{color:"white", textDecoration:"none"}}>Publish Property</Link>
+                    </li>
                 </ul>
             </nav>
         );
