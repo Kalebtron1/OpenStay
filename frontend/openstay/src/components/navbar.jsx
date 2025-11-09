@@ -5,10 +5,10 @@ export default function Navbar(){
             <nav style={{padding:"1rem",background:"#333"}}>
                 <ul style={{display:"flex", listStyle:"none",gap:"1rem", margin: 0}}>
                     <li>
-                        <Link to = "/" style={{color:"white", textDecoration:"noce"}}>Home</Link>
+                        <Link to = "/" style={{color:"white", textDecoration:"none"}}>Home</Link>
                     </li>
                     <li>
-                        <Link to = "/Payment" style={{color:"white", textDecoration:"noce"}}>Payments</Link>
+                        <Link to = "/Payment" style={{color:"white", textDecoration:"none"}}>Payments</Link>
                     </li>
                 </ul>
             </nav>

@@ -40,7 +40,7 @@ export const startPayment = async (req, res) => {
                     access: [
                         {
                         type: "incoming-payment",
-                        actions: ["create"],
+                        actions: ['read', 'complete', 'create']
                         },
                     ],
                 },
@@ -59,7 +59,7 @@ export const startPayment = async (req, res) => {
                     access: [
                         {
                         type: "incoming-payment",
-                        actions: ["create"],
+                        actions: ['read', 'complete', 'create']
                         },
                     ],
                 },
@@ -110,7 +110,7 @@ export const startPayment = async (req, res) => {
                     access: [
                         {
                             type: 'quote',
-                            actions: ['create']
+                            actions: ['create', 'read']
                         }
                     ]
                 }
@@ -147,9 +147,10 @@ export const startPayment = async (req, res) => {
         console.log(renterQuote,platformQuote)
         console.log(combinedQuoteAmount);
 
-        const NONCE = crypto.randomUUID();
+        
+        
         //concesion de pago saliente en el usuario
-        const customerOutgoingPaymentGrant =  await client.grant.request(
+        const pendingCustomerOutgoingPaymentGrant =  await client.grant.request(
             {
                 url: customerAddress.authServer
             },
@@ -158,7 +159,7 @@ export const startPayment = async (req, res) => {
                     access: [
                         {
                             type:'outgoing-payment',
-                            actions: ['create'],
+                            actions: ['read', 'create'],
                             limits: {
                                 debitAmount: {
                                     assetCode: "MXN",
@@ -172,26 +173,25 @@ export const startPayment = async (req, res) => {
                 },
                 interact: {
                     start: ['redirect'],
-                    finish:{
-                        method : 'redirect',
-                        uri: '',
-                        nonce : NONCE
+                    
                     }
                 }
-            }
         )
         
 
 
 
         res.json({
-            outgoingPaymentGrant : customerOutgoingPaymentGrant,
+            outgoingPaymentGrant : pendingCustomerOutgoingPaymentGrant,
             platformQuote: platformQuote,
             renterQuote: renterQuote,
             combinedQuoteAmount: combinedQuoteAmount,
-            redirectUrl: customerOutgoingPaymentGrant.interact.redirect, 
+            redirectUrl: pendingCustomerOutgoingPaymentGrant.interact.redirect, 
             renterAddress: renterAddress,
-            platformAddress: platformAddress
+            platformAddress: platformAddress,
+            customer: "https://ilp.interledger-test.dev/pesosalan"
+            
+            
         });
     
 
@@ -207,24 +207,65 @@ export const startPayment = async (req, res) => {
 
 export const finishPayment = async (req,res) => {
     try{    
-        const {interact_ref,hash} = req.body;
+        const {interact_ref,hash,grant,renterQuote,platformQuote} = req.body;
+        const outgoingPaymentGrant = grant;
+        
         const privateKey = fs.readFileSync('private.key', 'utf8');
         const client = await createAuthenticatedClient({
             walletAddressUrl: "https://ilp.interledger-test.dev/openstayclient",
             privateKey: privateKey,
             keyId:"ca806e0d-db95-4698-a961-4642261d4c79"
         });
+        //usuario
+        const customerAddress = await client.walletAddress.get({
+            url: "https://ilp.interledger-test.dev/pesosalan"
+        });
+        //arrendador
+        const renterAddress = await client.walletAddress.get({
+            url: "https://ilp.interledger-test.dev/renter"
+        });
+        //plataforma
+        const platformAddress = await client.walletAddress.get({
+            url: "https://ilp.interledger-test.dev/openstayclient"
+        });
+        
+        
+
         const customerOutgoingPaymentGrant = await client.grant.continue(
             {
-                url: pendingCustomerOutgoingPaymentGrant.continue.uri,
-                accessToken: pendingCustomerOutgoingPaymentGrant.continue.access_token.value
+                url: outgoingPaymentGrant.continue.uri,
+                accessToken: outgoingPaymentGrant.continue.access_token.value
+            },
+            
+        )
+        // arrendador
+        const customerOutgoingPaymentToRenter = await client.outgoingPayment.create(
+            {
+                url: customerAddress.resourceServer,
+                accessToken: customerOutgoingPaymentGrant.access_token.value
             },
             {
-                interact_ref: interactRef
+                walletAddress: customerAddress.id,
+                quoteId: renterQuote
+                }
+            )
+            // Platform
+                const customerOutgoingPaymentToPlatform = await client.outgoingPayment.create(
+            {
+                url: customerAddress.resourceServer,
+                accessToken: customerOutgoingPaymentGrant.access_token.value
+            },
+            {
+                walletAddress: customerAddress.id,
+                quoteId: platformQuote
             }
+            
         )
+        res.json({ 
+        message: "Pago realizado con éxito", outgoingPaymentGrant
+    });
     }catch (error){
-        console.error(error);
+        console.error(error);   
         res.status(500).json({error:error.message});
     }
 

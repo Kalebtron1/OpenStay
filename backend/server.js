@@ -1,21 +1,16 @@
-import express from 'express';
-import cors from 'cors';
-import payments from './routes/paymentsRoute.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import express from "express";
+import cors from "cors";
+import openPaymentsRoutes from "./routes/paymentsRoute.js"; // ajusta tu ruta
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: "http://localhost:5173", // frontend permitido
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
-app.use('/api/payments', payments);
+app.use("/api/openPayments", openPaymentsRoutes);
 
-const PORT = process.env.PORT || 5000;
-
-app.get('/', (req, res) => {
-  res.send('Backend is running');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.listen(5000, () => console.log("Servidor corriendo en puerto 5000"));

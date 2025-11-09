@@ -1,26 +1,23 @@
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import Checkout from "./pages/Checkout"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const routes = [
-  {
-    path: "/",
-    element: (
-      <p>
-        Empty page, please go to the{" "}
-        <a className="color-blue" href="/checkout">
-          Checkout page
-        </a>
-      </p>
-    ),
-  },
-  {
-    path: "/checkout",
-    element: <Checkout />,
-  },
-]
+// Páginas
+import Payment from "./pages/Payment.jsx";
+import Home from "./pages/Home.jsx";
 
-const router = createBrowserRouter(routes)
+// Componentes
+import Navbar from "./components/navbar.jsx";
 
-export default function App() {
-  return <RouterProvider router={router} />
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/payment" element={<Payment />} />
+      </Routes>
+    </Router>
+  );
 }
+
+export default App;

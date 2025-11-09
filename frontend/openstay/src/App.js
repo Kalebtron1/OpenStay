@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Páginas
 import Payment from './pages/Payment.js';
-import Home from './pages/Home.js';
+import Home from './pages/Home.jsx';
 // Componentes
 import Navbar from './components/navbar.js';
 
@@ -16,5 +16,6 @@ export default function App() {
         <Route path="/Payment" element={<Payment />} />
       </Routes>
     </Router>
+    
   );
 };
