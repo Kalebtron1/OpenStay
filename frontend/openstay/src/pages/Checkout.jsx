@@ -30,7 +30,7 @@ export default function Checkout() {
             <h3 className="font-semibold text-gray-900 text-2xl">
               Modern Loft in Downtown
             </h3>
-            <p className="text-gray-500 text-lg mb-6">San Francisco, CA</p>
+            <p className="text-gray-500 text-lg mb-6">Instanbul, Türkiye</p>
             <div className="flex items-center space-x-8 text-lg text-gray-700 mb-6">
               <div className="flex items-center space-x-2">
                 <span>📅</span>
