@@ -4,7 +4,14 @@ import Checkout from "./pages/Checkout"
 const routes = [
   {
     path: "/",
-    element: <p>Placeholder</p>,
+    element: (
+      <p>
+        Empty page, please go to the{" "}
+        <a className="color-blue" href="/checkout">
+          Checkout page
+        </a>
+      </p>
+    ),
   },
   {
     path: "/checkout",
