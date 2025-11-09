@@ -63,7 +63,7 @@ function Payment() {
         }),
         
       });
-      console.log(renterQuoteId,platformQuoteId)
+      
       const data = await res.json();
 
       if (!res.ok) {
