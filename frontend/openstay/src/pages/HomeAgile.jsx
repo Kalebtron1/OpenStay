@@ -3,15 +3,21 @@ import { useNavigate } from 'react-router-dom';
 // Íconos para la calificación y ubicación
 import { StarIcon, MapPinIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'; 
 import propertyImage from "../assets/loft.jpg"
+import dp1 from "../assets/dp1.jpeg"
+import dp2 from "../assets/dp2.jpeg"
+import db3 from "../assets/db3.avif"
+import db4 from "../assets/db4.webp"
+import dp5 from "../assets/image.png"
+
 
 // Datos Mock para la integración rápida
 const mockProperties = [
     { id: 1, title: "Modern Loft in Downtown", location: "Cluj-Napoca, Romania", pricePerNight: 250, rating: 4.85, imageUrl: propertyImage },
-    { id: 2, title: "Cabaña Minimalista en el Bosque", location: "Valle de Bravo, Edo. Mex.", pricePerNight: 2800, rating: 4.91, imageUrl: "https://images.unsplash.com/photo-1594967340632-4dd2d2429645?fit=crop&w=600&h=450" },
-    { id: 3, title: "Departamento Histórico con Balcón", location: "Centro, Querétaro", pricePerNight: 950, rating: 4.60, imageUrl: "https://images.unsplash.com/photo-1502672260268-c13f64936d0f?fit=crop&w=600&h=450" },
-    { id: 4, title: "Suite de Diseño Industrial", location: "Americas, Guadalajara", pricePerNight: 1850, rating: 4.77, imageUrl: "https://images.unsplash.com/photo-1540518629004-9ad90e3039b2?fit=crop&w=600&h=450" },
-    { id: 5, title: "Ático Panorámico de Lujo", location: "Polanco, CDMX", pricePerNight: 4500, rating: 4.95, imageUrl: "https://images.unsplash.com/photo-1628122907409-543508d4b31a?fit=crop&w=600&h=450" },
-    { id: 6, title: "Estudio Céntrico y Luminoso", location: "Juárez, Monterrey", pricePerNight: 1100, rating: 4.52, imageUrl: "https://images.unsplash.com/photo-1560448204-6241b31a5413?fit=crop&w=600&h=450" },
+    { id: 2, title: "Cabaña Minimalista en el Bosque", location: "Valle de Bravo, Edo. Mex.", pricePerNight: 2800, rating: 4.91, imageUrl:dp1 },
+    { id: 3, title: "Departamento Histórico con Balcón", location: "Centro, Querétaro", pricePerNight: 950, rating: 4.60, imageUrl: dp2 },
+    { id: 4, title: "Suite de Diseño Industrial", location: "Americas, Guadalajara", pricePerNight: 1850, rating: 4.77, imageUrl: db3 },
+    { id: 5, title: "Ático Panorámico de Lujo", location: "Polanco, CDMX", pricePerNight: 4500, rating: 4.95, imageUrl: db4 },
+    { id: 6, title: "Estudio Céntrico y Luminoso", location: "Juárez, Monterrey", pricePerNight: 1100, rating: 4.52, imageUrl: dp5 },
 ];
 
 const HomeGridAgil = () => {
@@ -23,17 +29,17 @@ const HomeGridAgil = () => {
             
             <header><link rel="monetization" href="https://ilp.interledger-test.dev/sparkclient" /></header>
             {/* Header / Barra de Filtros */}
-            <header className="sticky top-0 z-10 bg-base-background shadow-sm border-b border-divider p-4">
-                <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <h1 className="text-3xl font-semibold text-primary">
-                        Explora Alojamientos
-                    </h1>
-                    <button className="flex items-center space-x-2 px-4 py-2 border border-divider rounded-md text-primary hover:bg-gray-50 transition duration-150">
-                        <AdjustmentsHorizontalIcon className="w-5 h-5 text-secondary" />
-                        <span className="font-medium text-sm">Filtros</span>
-                    </button>
-                </div>
-            </header>
+            <header className="sticky top-0 z-10 bg-white shadow-sm border-b border-divider p-4">
+  <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <h1 className="text-3xl font-semibold text-primary">
+      Explora Alojamientos
+    </h1>
+    <button className="flex items-center space-x-2 px-4 py-2 border border-divider rounded-md text-primary hover:bg-gray-50 transition duration-150">
+      <AdjustmentsHorizontalIcon className="w-5 h-5 text-secondary" />
+      <span className="font-medium text-sm">Filtros</span>
+    </button>
+  </div>
+</header>
 
             {/* Contenedor Principal del Grid */}
             <main className="max-w-7xl mx-auto py-8 sm:py-10 px-4 sm:px-6 lg:px-8">

@@ -1,32 +1,53 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-export default function Navbar(){
 
-        return (
-    <nav style={{ padding: "0.5rem 1rem", background: "#609120ff" }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+export default function Navbar() {
+  return (
+    <nav className="bg-gradient-to-r from-blue-800 via-indigo-900 to-purple-900 text-white px-6 py-4 shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        
         {/* Logo */}
-        <Link to="/" style={{ display: "flex", alignItems: "center" }}>
-      <img src={logo} alt="OpenStay Logo" style={{ height: "70px", width: "auto", display: "block" }} />
-    </Link>
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="OpenStay Logo" className="h-12 w-auto" />
+          <span className="ml-2 font-bold text-xl">OpenStay</span>
+        </Link>
 
         {/* Menú */}
-        <ul style={{ display: "flex", listStyle: "none", gap: "1rem", margin: 0 , padding:0}}>
+        <ul className="flex items-center gap-6">
           <li>
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link>
+            <Link 
+              to="/" 
+              className="hover:text-gray-300 transition font-medium"
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/Checkout" style={{ color: "white", textDecoration: "none" }}>Publish Property</Link>
+            <Link 
+              to="/checkout" 
+              className="hover:text-gray-300 transition font-medium"
+            >
+              Publish Property
+            </Link>
           </li>
           <li>
-            <Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link>
+            <Link 
+              to="/login" 
+              className="hover:text-gray-300 transition font-medium"
+            >
+              Login
+            </Link>
           </li>
           <li>
-            <Link to="/register" style={{ color: "white", textDecoration: "none" }}>Register</Link>
+            <Link 
+              to="/register" 
+              className="hover:text-gray-300 transition font-medium"
+            >
+              Register
+            </Link>
           </li>
         </ul>
       </div>
     </nav>
   );
-
-    }
+}

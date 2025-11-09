@@ -1,5 +1,6 @@
 import {useState} from "react"
 import propertyImage from "../assets/loft.jpg"
+import Footer from "../components/footer"
 
 export default function Checkout() {
   const [error, setError] = useState("")
@@ -91,5 +92,6 @@ export default function Checkout() {
 </div>
 
     </div>
+    
   )
 }
