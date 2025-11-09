@@ -159,7 +159,7 @@ export const startPayment = async (req, res) => {
                     access: [
                         {
                             type:'outgoing-payment',
-                            actions: ['read', 'create'],
+                            actions: ['create','read'],
                             limits: {
                                 debitAmount: {
                                     assetCode: "MXN",

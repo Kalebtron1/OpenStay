@@ -1,5 +1,6 @@
 import {useState} from "react"
 import propertyImage from "../assets/loft.jpg"
+import Footer from "../components/footer"
 
 export default function Checkout() {
   const [error, setError] = useState("")
@@ -26,73 +27,71 @@ export default function Checkout() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center relative overflow-hidden">
       <div className="w-full max-w-7xl min-h-[800px] bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
-        <div className="relative min-h-[700px]">
-          <img
-            src={propertyImage}
-            alt="Modern Loft"
-            className="w-full h-full object-cover md:rounded-l-3xl"
+  {/* Imagen */}
+  <div className="relative min-h-[700px]">
+    <img
+      src={propertyImage}
+      alt="Modern Loft"
+      className="w-full h-full object-cover md:rounded-l-3xl"
+    />
+  </div>
+
+  {/* Detalles */}
+  <div className="p-12 md:p-20 flex flex-col justify-between">
+    <div>
+      <h2 className="text-4xl font-semibold mb-8">Property Details</h2>
+
+      {/* Basic Info */}
+      <div className="mb-8">
+        <h3 className="font-semibold text-gray-900 text-2xl mb-2">Amenities</h3>
+        <p className="text-gray-500 text-lg">2 bathrooms, 1 kitchen, 1 living room</p>
+      </div>
+
+      {/* Location */}
+      <div className="mb-8">
+        <h3 className="font-semibold text-gray-900 text-2xl mb-2">Location</h3>
+        <p className="text-gray-500 text-lg mb-1">Modern Loft in Downtown</p>
+        <p className="text-gray-500 text-lg mb-1">Cluj-Napoca, Romania</p>
+      </div>
+
+      {/* Guests */}
+      <div className="mb-8">
+        <h3 className="font-semibold text-gray-900 text-2xl mb-4">Guests</h3>
+        <div className="flex items-center space-x-4 text-lg text-gray-700">
+          <span>Number of guests:</span>
+          <input
+            type="number"
+            placeholder="2"
+            disabled
+            className="w-20 p-2 border border-gray-300 rounded-md text-center bg-gray-100 text-gray-700"
           />
         </div>
-        <div className="p-12 md:p-20 flex flex-col justify-between">
-          <h2 className="text-4xl font-semibold mb-10">Confirm and Pay</h2>
-          <div className="mb-10">
-            <h3 className="font-semibold text-gray-900 text-2xl">
-              Modern Loft in Downtown
-            </h3>
-            <p className="text-gray-500 text-lg mb-6">Instanbul, Türkiye</p>
-            <div className="flex items-center space-x-8 text-lg text-gray-700 mb-6">
-              <div className="flex items-center space-x-2">
-                <span>📅</span>
-                <span>Oct 14 - Oct 19</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span>👥</span>
-                <span>2 guests</span>
-              </div>
-            </div>
-            <div className="border-t border-gray-200 pt-6 space-y-4 text-lg">
-              <div className="flex justify-between">
-                <span>5 nights × $250</span>
-                <span>$1,250.00</span>
-              </div>
-              <hr className="my-4" />
-              <div className="flex justify-between font-semibold text-gray-900">
-                <span>Total (USD)</span>
-                <span>$1,250.00</span>
-              </div>
-            </div>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className="">
-              <div className="space-y-4 mb-4">
-                <label htmlFor="walletAddress" className="text-lg">
-                  Interledger Wallet Address
-                </label>
-                <input
-                  type="text"
-                  id="walletAddress"
-                  name="walletAddress"
-                  className="w-full mt-2 px-3 py-3 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200 text-lg"
-                />
-              </div>
-              <div style={{minHeight: "1.5em"}}>
-                {error ? (
-                  <p className="text-lg text-red-600 font-medium">{error}</p>
-                ) : null}
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="hover:cursor-pointer w-full mt-2 bg-green-500 text-white py-4 rounded-full font-semibold text-xl hover:bg-green-600"
-            >
-              Pay With Interledger
-            </button>
-            <p className="text-sm text-gray-500 text-center mt-4">
-              🔒 Your payment is secure
-            </p>
-          </form>
+      </div>
+
+      {/* Pricing */}
+      <div className="border-t border-gray-200 pt-6 space-y-4 text-lg">
+        <div className="flex justify-between">
+          <span>5 nights × $250</span>
+          <span>$1,250.00</span>
+        </div>
+        <hr className="my-4" />
+        <div className="flex justify-between font-semibold text-gray-900 text-xl">
+          <span>Total (USD)</span>
+          <span>$1,250.00</span>
         </div>
       </div>
     </div>
+
+    {/* Botón Publish */}
+    <button
+      className="hover:cursor-pointer w-full mt-8 bg-green-500 text-white py-4 rounded-full font-semibold text-xl hover:bg-green-600 transition-colors duration-200"
+    >
+      Publish
+    </button>
+  </div>
+</div>
+
+    </div>
+    
   )
 }
