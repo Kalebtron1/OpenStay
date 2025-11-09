@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 export default function Navbar(){
 
         return (
-    <nav style={{ padding: "1rem", background: "#609120ff" }}>
+    <nav style={{ padding: "0.5rem 1rem", background: "#609120ff" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Logo */}
         <Link to="/" style={{ display: "flex", alignItems: "center" }}>
