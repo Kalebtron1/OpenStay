@@ -1,17 +1,21 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Checkout from "./pages/Checkout"
+import HomeGridAgil from "./pages/HomeAgile"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 const routes = [
   {
     path: "/",
-    element: (
-      <p>
-        Empty page, please go to the{" "}
-        <a className="color-blue" href="/checkout">
-          Checkout page
-        </a>
-      </p>
-    ),
+    element: <HomeGridAgil />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     path: "/checkout",
