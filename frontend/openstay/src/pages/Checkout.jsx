@@ -72,7 +72,7 @@ export default function Checkout() {
                   type="text"
                   id="walletAddress"
                   name="walletAddress"
-                  className="w-full mt-2 px-6 py-4 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200 text-lg"
+                  className="w-full mt-2 px-3 py-3 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200 text-lg"
                 />
               </div>
               <div style={{minHeight: "1.5em"}}>
