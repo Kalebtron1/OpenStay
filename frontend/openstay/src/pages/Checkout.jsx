@@ -12,6 +12,15 @@ export default function Checkout() {
         walletAddress,
       )
     setError(isValid ? "" : "Please enter a valid wallet address")
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    // TODO: change this, it's just a placeholder to call the backend
+    fetch(`${backendUrl}/create-payment-request`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({walletAddress}),
+    })
   }
 
   return (
