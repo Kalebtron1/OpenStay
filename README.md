@@ -65,3 +65,72 @@ Alan (Desarrollador Backend): Experiencia profunda en Interledger Protocol y sis
 Ryan (Desarrollador Frontend): Experiencia comprobada en React y optimización de interfaces de usuario.
 
 Adrian (UX/UI Specialist): Diseño de flujos de usuario complejos de pago con enfoque en la claridad.
+
+# OPENSTAY: INTERLEDGER-BASED LODGING PLATFORM (ONE-PAGER)
+## CONTEXT & SOLUTION
+### IDENTIFIED PROBLEM:
+
+Existing web lodging platforms suffer from slow transactions, high fees, and lack of transparency in the payment process, mainly due to conversion costs and banking delays.
+
+### OUR SOLUTION:
+
+A lodging platform built on the Interledger Protocol (ILP) to enable fast, low-cost, and transparent transactions. It allows instant settlement in the preferred currency (fiat or crypto).
+
+## VALUE PROPOSITION
+### VALUE FOR HOSTS:
+
+Receive payment immediately after the guest pays, in their local currency, fully offloading the complexity of financial logistics.
+
+### VALUE FOR GUESTS:
+
+Enjoy complete transparency in the final transaction cost, eliminating hidden fees and currency exchange volatility.
+
+### BUSINESS MODEL:
+
+Revenue through a 12% transaction fee. Processing times under 5 minutes.
+
+## KEY BENEFITS:
+
+Transactional Efficiency: Significant reduction in costs and processing times thanks to ILP’s settlement layer.
+
+Cost Transparency: Exact visibility of the final cost for the user.
+
+Currency Flexibility: Support for unconventional currencies and cryptocurrencies.
+
+# TECHNOLOGICAL STACK & ARCHITECTURE
+
+COMPONENT: Payment Protocol
+TECHNOLOGY: Interledger (ILP)
+DESCRIPTION: Core technology for atomic value transfer across different ledgers.
+
+COMPONENT: Backend
+TECHNOLOGY: Node.js with Express
+DESCRIPTION: High-concurrency, rapid development environment for service layer.
+
+COMPONENT: Frontend
+TECHNOLOGY: React with Vite
+DESCRIPTION: Modern framework for building dynamic and optimized user interfaces.
+
+INITIAL ARCHITECTURE: Monolithic
+DESCRIPTION: Chosen strategy to optimize Time-to-Market and initial development speed.
+
+# VIABILITY & SCALABILITY STRATEGY
+## QUANTITATIVE ANALYSIS:
+
+Potential Market (TAM): 10% of Airbnb’s market in Mexico City (CDMX).
+
+Minimum Viable Milestone (MVH): 120 transactions or $36,000 USD TTV within 6-12 months.
+
+### SCALABILITY PLAN:
+
+The monolithic architecture is temporary. The strategic growth plan is eventual decomposition into microservices. This will allow independent scaling of high-performance components (specifically the ILP payment gateway), ensuring stability under massive transactional load increases.
+
+## CORE TEAM
+
+Alejandro (Project Manager): Comprehensive management of tech projects.
+
+Alan (Backend Developer): Deep experience with Interledger Protocol and high-performance systems.
+
+Ryan (Frontend Developer): Proven expertise in React and user interface optimization.
+
+Adrian (UX/UI Specialist): Design of complex payment flows with focus on clarity.

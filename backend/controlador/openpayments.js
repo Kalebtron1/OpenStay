@@ -9,7 +9,6 @@ export const startPayment = async (req, res) => {
         const amountNumber = Number(amount);
         const amountRenter = Math.round(amountNumber * 100 * 0.9).toString();
         const amountPlatform = Math.round(amountNumber * 100 * 0.1).toString();
-        console.log(amountNumber,amountPlatform,amountRenter);
 
         const privateKey = fs.readFileSync('private.key', 'utf8');
         const client = await createAuthenticatedClient({
@@ -144,8 +143,7 @@ export const startPayment = async (req, res) => {
         const NumbercombinedQuoteAmount = Number(renterQuote.debitAmount.value) + 
                                     Number(platformQuote.debitAmount.value)
         const combinedQuoteAmount  = NumbercombinedQuoteAmount.toString()
-        console.log(renterQuote,platformQuote)
-        console.log(combinedQuoteAmount);
+       
 
         
         
