@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Payment from './pages/Payment.js';
 import Home from './pages/Home.jsx';
 import Checkout from './pages/Checkout.jsx'
+
 // Componentes
 import Navbar from './components/navbar.js';
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // Íconos para la calificación y ubicación
 import { StarIcon, MapPinIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'; 
+import propertyImage from "../assets/loft.jpg"
 
 // Datos Mock para la integración rápida
 const mockProperties = [
-    { id: 1, title: "Modern Loft con vistas a la ciudad", location: "Roma Norte, CDMX", pricePerNight: 1500, rating: 4.85, imageUrl: "https://images.unsplash.com/photo-1542301987-a2283e3f05d5?fit=crop&w=600&h=450" },
+    { id: 1, title: "Modern Loft in Downtown", location: "Cluj-Napoca, Romania", pricePerNight: 250, rating: 4.85, imageUrl: propertyImage },
     { id: 2, title: "Cabaña Minimalista en el Bosque", location: "Valle de Bravo, Edo. Mex.", pricePerNight: 2800, rating: 4.91, imageUrl: "https://images.unsplash.com/photo-1594967340632-4dd2d2429645?fit=crop&w=600&h=450" },
     { id: 3, title: "Departamento Histórico con Balcón", location: "Centro, Querétaro", pricePerNight: 950, rating: 4.60, imageUrl: "https://images.unsplash.com/photo-1502672260268-c13f64936d0f?fit=crop&w=600&h=450" },
     { id: 4, title: "Suite de Diseño Industrial", location: "Americas, Guadalajara", pricePerNight: 1850, rating: 4.77, imageUrl: "https://images.unsplash.com/photo-1540518629004-9ad90e3039b2?fit=crop&w=600&h=450" },
@@ -13,19 +15,19 @@ const mockProperties = [
 ];
 
 const HomeGridAgil = () => {
-    const properties = mockProperties; 
+    const navigate = useNavigate(); // ✅ Correcto: dentro del componente
+    const properties = mockProperties;
 
     return (
         <div className="min-h-screen bg-gray-50">
+            
+            <header><link rel="monetization" href="https://ilp.interledger-test.dev/sparkclient" /></header>
             {/* Header / Barra de Filtros */}
             <header className="sticky top-0 z-10 bg-base-background shadow-sm border-b border-divider p-4">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    {/* H1 (Título de Página) */}
                     <h1 className="text-3xl font-semibold text-primary">
                         Explora Alojamientos
                     </h1>
-                    
-                    {/* Botón de Filtros */}
                     <button className="flex items-center space-x-2 px-4 py-2 border border-divider rounded-md text-primary hover:bg-gray-50 transition duration-150">
                         <AdjustmentsHorizontalIcon className="w-5 h-5 text-secondary" />
                         <span className="font-medium text-sm">Filtros</span>
@@ -35,23 +37,24 @@ const HomeGridAgil = () => {
 
             {/* Contenedor Principal del Grid */}
             <main className="max-w-7xl mx-auto py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
-                {/* Grid de Alojamientos (Responsivo) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10">
-                    
                     {properties.map((property) => (
-                        // Inicio del componente de tarjeta integrado
-                        <div 
-                            key={property.id} 
+                        <div
+                            key={property.id}
                             className="group cursor-pointer bg-base-background rounded-xl 
                                        shadow-sm hover:shadow-lg transition duration-300 ease-in-out 
                                        border border-divider/50"
+                            onClick={() => {
+                                if (property.id === 1) {
+                                    navigate('/payment'); // <-- Cambia '/tu-pagina' por tu ruta real
+                                }
+                            }}
                         >
-                            
-                            {/* 1. Imagen y Rating */}
+                            {/* Imagen y Rating */}
                             <div className="relative aspect-[4/3] w-full overflow-hidden">
-                                <div 
+                                <div
                                     className="w-full h-full bg-gray-200"
-                                    style={{ 
+                                    style={{
                                         backgroundImage: `url(${property.imageUrl})`,
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',
@@ -59,30 +62,21 @@ const HomeGridAgil = () => {
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-t-xl"></div>
                                 </div>
-                                
-                                {/* Indicador de rating */}
                                 <div className="absolute top-3 right-3 flex items-center bg-base-background/90 p-1.5 rounded-full text-sm font-semibold text-primary shadow-md">
-                                    {/* Nota: Usamos StarIcon como outline para mantener la consistencia, pero puedes cambiar a 'solid' si prefieres que esté relleno */}
-                                    <StarIcon className="w-4 h-4 text-primary mr-1" /> 
+                                    <StarIcon className="w-4 h-4 text-primary mr-1" />
                                     {property.rating.toFixed(2)}
                                 </div>
                             </div>
 
-                            {/* 2. Contenido de la Card (Padding de 24px - 32px) */}
+                            {/* Contenido de la Card */}
                             <div className="p-4 sm:p-6">
-                                
-                                {/* H2 (Título de Card/Reserva) */}
                                 <h2 className="text-xl font-bold text-primary mb-1 truncate">
                                     {property.title}
                                 </h2>
-
-                                {/* Ubicación (Metadatos) */}
                                 <div className="flex items-center text-secondary text-sm mb-3">
                                     <MapPinIcon className="w-4 h-4 mr-1 text-secondary" />
                                     <span className="truncate">{property.location}</span>
                                 </div>
-
-                                {/* Precio */}
                                 <div className="mt-2 pt-2 border-t border-divider">
                                     <p className="text-base text-primary">
                                         <span className="text-lg font-semibold text-primary">
@@ -93,7 +87,6 @@ const HomeGridAgil = () => {
                                 </div>
                             </div>
                         </div>
-                        // Fin del componente de tarjeta integrado
                     ))}
                 </div>
             </main>

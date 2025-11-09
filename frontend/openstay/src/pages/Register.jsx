@@ -6,6 +6,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('customer');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,18 +120,29 @@ const Register = () => {
                 placeholder="Repite tu contraseña"
               />
             </div>
+            <div className="mb-6">
+              <label htmlFor="role" className="block text-sm font-medium text-primary mb-2">
+                Selecciona tu rol
+              </label>
+              <select
+                id="role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className="w-full px-4 py-3 border border-divider rounded-md text-primary focus:outline-none focus:ring-1 focus:ring-action-primary transition duration-150"
+              >
+                <option value="customer">Customer</option>
+                <option value="renter">Renter</option>
+              </select>
+            </div>
 
             {/* Botón Principal (CTA) */}
             <button
-              type="submit"
-              className="w-full bg-action-primary text-white font-medium 
-                         py-3 rounded-md transition duration-200 
-                         hover:bg-action-primary/90 focus:outline-none focus:ring-2 
-                         focus:ring-offset-2 focus:ring-action-primary shadow-md 
-                         text-base"
-            >
-              Crear Cuenta
-            </button>
+  type="submit"
+  className="w-full bg-blue-600 text-white font-medium py-3 rounded-md transition duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-md text-base"
+>
+  Crear Cuenta
+</button>
+
           </form>
 
           {/* Enlace a Login */}
